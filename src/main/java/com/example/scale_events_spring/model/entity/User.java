@@ -1,11 +1,9 @@
 package com.example.scale_events_spring.model.entity;
 
 
-import com.example.scale_events_spring.model.entity.enums.OfficeLocationEnum;
 import com.example.scale_events_spring.model.entity.enums.RoleNameEnum;
 import jakarta.persistence.*;
 
-import java.util.List;
 import java.util.Set;
 
 
@@ -15,38 +13,31 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    private String username;
+    private String firstname;
+    private String lastname;
     private String password;
     private String email;
-    private String name;
 
-    @ManyToMany
-    @JoinTable(name = "user_event",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "event_id")
-    )
-    private Set<Event> events;
+    @ManyToOne
+    private Location location;
 
-    @Enumerated(EnumType.STRING)
-    private OfficeLocationEnum location;
 
     @Enumerated(EnumType.STRING)
     private RoleNameEnum role;
 
 
-    public User(String id, String username, String password, String email, String name, Set<Event> events, OfficeLocationEnum location, RoleNameEnum role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.name = name;
-        this.events = events;
-        this.location = location;
-        this.role = role;
-    }
 
     public User() {
+    }
 
+    public User(String id, String firstname, String lastname, String password, String email, Location location, RoleNameEnum role) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.email = email;
+        this.location = location;
+        this.role = role;
     }
 
     public String getId() {
@@ -58,12 +49,30 @@ public class User {
         return this;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public User setUsername(String username) {
-        this.username = username;
+    public User setFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public User setLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public User setPassword(String password) {
+        this.password = password;
         return this;
     }
 
@@ -76,12 +85,12 @@ public class User {
         return this;
     }
 
-    public String getName() {
-        return name;
+    public Location getLocation() {
+        return location;
     }
 
-    public User setName(String name) {
-        this.name = name;
+    public User setLocation(Location location) {
+        this.location = location;
         return this;
     }
 
@@ -91,31 +100,6 @@ public class User {
 
     public User setRole(RoleNameEnum role) {
         this.role = role;
-        return this;
-    }
-    public OfficeLocationEnum getLocation() {
-        return location;
-    }
-
-    public User setLocation(OfficeLocationEnum location) {
-        this.location = location;
-        return this;
-    }
-    public String getPassword() {
-        return password;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
-        return this;
-    }
-
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    public User setEvents(Set<Event> events) {
-        this.events = events;
         return this;
     }
 }
