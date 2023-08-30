@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    user:
+      name: ${USERNAME}
+      password: ${PASSWORD}
+
+logging:
+  level:
+    org.springframework.core.io.support: DEBUG
+    org.springframework.context.annotation: DEBUG
+
+
+#  host:
+#    url: ${HOST_URL}
+
