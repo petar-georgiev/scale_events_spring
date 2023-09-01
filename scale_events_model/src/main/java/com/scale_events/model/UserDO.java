@@ -11,7 +11,7 @@ public class UserDO implements User {
     private String lastname;
     private String password;
     private String email;
-    private Location location;
+    private LocationDO location;
     private RoleNameEnum role;
 
     @Override
@@ -40,7 +40,7 @@ public class UserDO implements User {
     }
 
     @Override
-    public Location getLocation() {
+    public LocationDO getLocation() {
         return location;
     }
 
@@ -76,7 +76,7 @@ public class UserDO implements User {
     }
 
     @Override
-    public void setLocation(Location location) {
+    public void setLocation(LocationDO location) {
         this.location = location;
     }
 

@@ -4,14 +4,10 @@ import java.util.Set;
 
 public class CategoryDO implements Category {
     private Long id;
-
     private String name;
-
     private String description;
-
-    private Set<Topic> topics;
-
-    private SkillArea skillArea;
+    private Set<TopicDO> topics;
+    private SkillAreaDO skillArea;
 
 
     @Override
@@ -30,12 +26,12 @@ public class CategoryDO implements Category {
     }
 
     @Override
-    public Set<Topic> getTopics() {
+    public Set<TopicDO> getTopics() {
         return topics;
     }
 
     @Override
-    public SkillArea getSkillArea() {
+    public SkillAreaDO getSkillArea() {
         return skillArea;
     }
 
@@ -55,12 +51,12 @@ public class CategoryDO implements Category {
     }
 
     @Override
-    public void setTopics(Set<Topic> topics) {
+    public void setTopics(Set<TopicDO> topics) {
         this.topics = topics;
     }
 
     @Override
-    public void setSkillArea(SkillArea skillArea) {
+    public void setSkillArea(SkillAreaDO skillArea) {
         this.skillArea = skillArea;
     }
 }

@@ -13,10 +13,8 @@ public class SkillAreaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Enumerated(EnumType.STRING)
     private SkillAreaTypeEnum type;
-
 
     @OneToMany(mappedBy = "skillArea")
     private Set<TopicEntity> topics;

@@ -15,7 +15,7 @@ public interface User {
 
     String getEmail();
 
-    Location getLocation();
+    LocationDO getLocation();
 
     RoleNameEnum getRole();
 
@@ -30,7 +30,7 @@ public interface User {
 
     void setEmail(String email);
 
-    void setLocation(Location location);
+    void setLocation(LocationDO location);
 
     void setRole(RoleNameEnum role);
 }

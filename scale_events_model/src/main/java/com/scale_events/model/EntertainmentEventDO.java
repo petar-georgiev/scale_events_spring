@@ -2,9 +2,7 @@ package com.scale_events.model;
 
 public class EntertainmentEventDO extends EventDO implements EntertainmentEvent {
     private String activity;
-
-    private Location location;
-
+    private LocationDO location;
 
     @Override
     public String getActivity() {
@@ -12,7 +10,7 @@ public class EntertainmentEventDO extends EventDO implements EntertainmentEvent 
     }
 
     @Override
-    public Location getLocation() {
+    public LocationDO getLocation() {
         return location;
     }
 
@@ -23,7 +21,7 @@ public class EntertainmentEventDO extends EventDO implements EntertainmentEvent 
     }
 
     @Override
-    public void setLocation(Location location) {
+    public void setLocation(LocationDO location) {
         this.location = location;
     }
 }

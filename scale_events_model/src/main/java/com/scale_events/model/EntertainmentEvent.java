@@ -3,11 +3,11 @@ package com.scale_events.model;
 public interface EntertainmentEvent extends Event {
     String getActivity();
 
-    Location getLocation();
+    LocationDO getLocation();
 
     void setActivity(String activity);
 
-    void setLocation(Location location);
+    void setLocation(LocationDO location);
 
 
 }

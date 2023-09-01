@@ -11,13 +11,13 @@ public class LocationDO implements Location {
 
     private OfficeLocationEnum name;
 
-    private SeminarEvent seminarEvent;
+    private SeminarEventDO seminarEvent;
 
-    private Set<User> users;
+    private Set<UserDO> users;
 
-    private Set<InternalTrainingEvent> internalTrainingEvents;
+    private Set<InternalTrainingEventDO> internalTrainingEvents;
 
-    private Set<EntertainmentEvent> entertainmentEvents;
+    private Set<EntertainmentEventDO> entertainmentEvents;
 
     @Override
     public UUID getId() {
@@ -30,22 +30,22 @@ public class LocationDO implements Location {
     }
 
     @Override
-    public Set<User> getUsers() {
+    public Set<UserDO> getUsers() {
         return users;
     }
 
     @Override
-    public SeminarEvent getSeminarEvent() {
+    public SeminarEventDO getSeminarEvent() {
         return seminarEvent;
     }
 
     @Override
-    public Set<InternalTrainingEvent> getInternalTrainingEvents() {
+    public Set<InternalTrainingEventDO> getInternalTrainingEvents() {
         return internalTrainingEvents;
     }
 
     @Override
-    public Set<EntertainmentEvent> getEntertainmentEvents() {
+    public Set<EntertainmentEventDO> getEntertainmentEvents() {
         return entertainmentEvents;
     }
 
@@ -60,22 +60,22 @@ public class LocationDO implements Location {
     }
 
     @Override
-    public void setUsers(Set<User> users) {
+    public void setUsers(Set<UserDO> users) {
         this.users = users;
     }
 
     @Override
-    public void setSeminarEvent(SeminarEvent seminarEvent) {
+    public void setSeminarEvent(SeminarEventDO seminarEvent) {
         this.seminarEvent = seminarEvent;
     }
 
     @Override
-    public void setInternalTrainingEvents(Set<InternalTrainingEvent> internalTrainingEvents) {
+    public void setInternalTrainingEvents(Set<InternalTrainingEventDO> internalTrainingEvents) {
         this.internalTrainingEvents = internalTrainingEvents;
     }
 
     @Override
-    public void setEntertainmentEvents(Set<EntertainmentEvent> entertainmentEvents) {
+    public void setEntertainmentEvents(Set<EntertainmentEventDO> entertainmentEvents) {
         this.entertainmentEvents = entertainmentEvents;
     }
 }

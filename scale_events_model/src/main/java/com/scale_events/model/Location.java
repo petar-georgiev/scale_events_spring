@@ -10,19 +10,24 @@ public interface Location {
 
     OfficeLocationEnum getName();
 
-    Set<User> getUsers();
+    Set<UserDO> getUsers();
 
-    SeminarEvent getSeminarEvent();
+    SeminarEventDO getSeminarEvent();
 
-    Set<InternalTrainingEvent> getInternalTrainingEvents();
+    Set<InternalTrainingEventDO> getInternalTrainingEvents();
 
-    Set<EntertainmentEvent> getEntertainmentEvents();
+    Set<EntertainmentEventDO> getEntertainmentEvents();
 
     void setId(UUID id);
+
     void setName(OfficeLocationEnum officeLocationEnum);
-    void setUsers(Set<User> users);
-    void setSeminarEvent(SeminarEvent seminarEvent);
-    void setInternalTrainingEvents(Set<InternalTrainingEvent> internalTrainingEvents);
-    void setEntertainmentEvents(Set<EntertainmentEvent> entertainmentEvents);
+
+    void setUsers(Set<UserDO> users);
+
+    void setSeminarEvent(SeminarEventDO seminarEvent);
+
+    void setInternalTrainingEvents(Set<InternalTrainingEventDO> internalTrainingEvents);
+
+    void setEntertainmentEvents(Set<EntertainmentEventDO> entertainmentEvents);
 
 }

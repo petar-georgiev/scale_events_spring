@@ -5,12 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 @Repository
 @EnableJpaRepositories
-public interface UserRepo extends JpaRepository<UserEntity, UUID> {
-    Optional<UserEntity> findByEmailAndPassword(String email, String password);
-    UserEntity findByEmail(String email);
+public interface UserRepository extends JpaRepository<UserEntity, UUID> {
+   List<UserEntity> findAll();
 }

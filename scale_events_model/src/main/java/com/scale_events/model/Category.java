@@ -7,12 +7,12 @@ public interface Category {
     Long getId();
     String getName();
     String getDescription();
-    Set<Topic> getTopics();
-    SkillArea getSkillArea();
+    Set<TopicDO> getTopics();
+    SkillAreaDO getSkillArea();
 
     void setId(Long id);
     void setName(String name);
     void setDescription(String description);
-    void setTopics(Set<Topic>topics);
-    void setSkillArea(SkillArea skillArea);
+    void setTopics(Set<TopicDO>topics);
+    void setSkillArea(SkillAreaDO skillArea);
 }

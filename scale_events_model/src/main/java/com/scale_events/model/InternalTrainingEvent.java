@@ -1,15 +1,15 @@
 package com.scale_events.model;
 
-public interface InternalTrainingEvent extends Event{
+public interface InternalTrainingEvent extends Event {
     String getRecordingUrl();
 
-    Topic getTopic();
+    TopicDO getTopic();
 
-    Location getLocation();
+    LocationDO getLocation();
 
     void setRecordingUrl(String recordingUrl);
 
-    void setTopic(Topic topic);
+    void setTopic(TopicDO topic);
 
-    void setLocation(Location location);
+    void setLocation(LocationDO location);
 }

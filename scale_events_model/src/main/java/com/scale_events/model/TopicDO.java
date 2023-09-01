@@ -11,13 +11,13 @@ public class TopicDO implements Topic {
 
     private String description;
 
-    private SkillArea skillArea;
+    private SkillAreaDO skillArea;
 
-    private SeminarEvent seminarEvent;
+    private SeminarEventDO seminarEvent;
 
-    private Set<InternalTrainingEvent> internalTrainingEvents;
+    private Set<InternalTrainingEventDO> internalTrainingEvents;
 
-    private Category category;
+    private CategoryDO category;
 
     @Override
     public UUID getId() {
@@ -35,22 +35,22 @@ public class TopicDO implements Topic {
     }
 
     @Override
-    public SkillArea getSkillArea() {
+    public SkillAreaDO getSkillArea() {
         return skillArea;
     }
 
     @Override
-    public SeminarEvent getSeminarEvent() {
+    public SeminarEventDO getSeminarEvent() {
         return seminarEvent;
     }
 
     @Override
-    public Set<InternalTrainingEvent> getInternalTrainingEvents() {
+    public Set<InternalTrainingEventDO> getInternalTrainingEvents() {
         return internalTrainingEvents;
     }
 
     @Override
-    public Category getCategory() {
+    public CategoryDO getCategory() {
         return category;
     }
 
@@ -70,22 +70,22 @@ public class TopicDO implements Topic {
     }
 
     @Override
-    public void setSkillArea(SkillArea skillArea) {
+    public void setSkillArea(SkillAreaDO skillArea) {
         this.skillArea = skillArea;
     }
 
     @Override
-    public void setSeminarEvent(SeminarEvent seminarEvent) {
+    public void setSeminarEvent(SeminarEventDO seminarEvent) {
         this.seminarEvent = seminarEvent;
     }
 
     @Override
-    public void setInternalTrainingEvents(Set<InternalTrainingEvent> internalTrainingEvents) {
+    public void setInternalTrainingEvents(Set<InternalTrainingEventDO> internalTrainingEvents) {
         this.internalTrainingEvents = internalTrainingEvents;
     }
 
     @Override
-    public void setCategory(Category category) {
+    public void setCategory(CategoryDO category) {
         this.category = category;
     }
 }

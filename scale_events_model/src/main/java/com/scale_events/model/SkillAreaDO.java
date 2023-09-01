@@ -9,9 +9,9 @@ public class SkillAreaDO implements SkillArea {
 
     private SkillAreaTypeEnum type;
 
-    private Set<Topic> topics;
+    private Set<TopicDO> topics;
 
-    private Set<Category> categories;
+    private Set<CategoryDO> categories;
 
     @Override
     public Long getId() {
@@ -24,12 +24,12 @@ public class SkillAreaDO implements SkillArea {
     }
 
     @Override
-    public Set<Topic> getTopics() {
+    public Set<TopicDO> getTopics() {
         return topics;
     }
 
     @Override
-    public Set<Category> getCategories() {
+    public Set<CategoryDO> getCategories() {
         return categories;
     }
 
@@ -44,12 +44,12 @@ public class SkillAreaDO implements SkillArea {
     }
 
     @Override
-    public void setTopics(Set<Topic> topics) {
+    public void setTopics(Set<TopicDO> topics) {
         this.topics = topics;
     }
 
     @Override
-    public void setCategories(Set<Category> categories) {
+    public void setCategories(Set<CategoryDO> categories) {
         this.categories = categories;
     }
 }

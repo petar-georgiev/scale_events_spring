@@ -10,17 +10,16 @@ public interface SkillArea {
 
     SkillAreaTypeEnum getType();
 
-    Set<Topic> getTopics();
+    Set<TopicDO> getTopics();
 
-
-    Set<Category> getCategories();
+    Set<CategoryDO> getCategories();
 
     void setId(Long id);
 
     void setType(SkillAreaTypeEnum type);
 
-    void setTopics(Set<Topic> topics);
+    void setTopics(Set<TopicDO> topics);
 
-    void setCategories(Set<Category>categories);
+    void setCategories(Set<CategoryDO> categories);
 
 }

@@ -3,9 +3,9 @@ package com.scale_events.model;
 public class InternalTrainingEventDO extends EventDO implements InternalTrainingEvent {
     private String recordingUrl;
 
-    private Topic topic;
+    private TopicDO topic;
 
-    private Location location;
+    private LocationDO location;
 
     @Override
     public String getRecordingUrl() {
@@ -13,12 +13,12 @@ public class InternalTrainingEventDO extends EventDO implements InternalTraining
     }
 
     @Override
-    public Topic getTopic() {
+    public TopicDO getTopic() {
         return topic;
     }
 
     @Override
-    public Location getLocation() {
+    public LocationDO getLocation() {
         return location;
     }
 
@@ -28,12 +28,12 @@ public class InternalTrainingEventDO extends EventDO implements InternalTraining
     }
 
     @Override
-    public void setTopic(Topic topic) {
+    public void setTopic(TopicDO topic) {
         this.topic = topic;
     }
 
     @Override
-    public void setLocation(Location location) {
+    public void setLocation(LocationDO location) {
         this.location = location;
     }
 
