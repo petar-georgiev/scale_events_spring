@@ -26,12 +26,10 @@ public class SpringSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/api/v1/user/**").hasAnyRole("MANAGER", "USER")
+                        .requestMatchers(HttpMethod.GET,"/v1/users/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated()
                 )
-//                .formLogin(form -> form
-//                        .loginPage("/login").permitAll())
                 .logout(LogoutConfigurer::permitAll)
                 .build();
     }
