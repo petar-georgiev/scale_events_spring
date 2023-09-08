@@ -1,8 +1,16 @@
 package com.scale_events.data.entity;
 
 import com.scale_events.model.enums.OfficeLocationEnum;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -32,7 +40,10 @@ public class LocationEntity {
     public LocationEntity() {
     }
 
-    public LocationEntity(UUID id, OfficeLocationEnum name, Set<UserEntity> users, SeminarEventEntity seminarEvent, Set<InternalTrainingEventEntity> internalTrainingEvents, Set<EntertainmentEventEntity> entertainmentEvents) {
+    public LocationEntity(UUID id, OfficeLocationEnum name,
+                          Set<UserEntity> users, SeminarEventEntity seminarEvent,
+                          Set<InternalTrainingEventEntity> internalTrainingEvents,
+                          Set<EntertainmentEventEntity> entertainmentEvents) {
         this.id = id;
         this.name = name;
         this.users = users;
@@ -94,4 +105,23 @@ public class LocationEntity {
         this.entertainmentEvents = entertainmentEvents;
         return this;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LocationEntity location = (LocationEntity) o;
+        return getId().equals(location.getId()) &&
+                getName() == location.getName() && Objects.equals(getUsers(),
+                location.getUsers()) && Objects.equals(getSeminarEvent(),
+                location.getSeminarEvent()) && Objects.equals(getInternalTrainingEvents(),
+                location.getInternalTrainingEvents()) && Objects.equals(getEntertainmentEvents(),
+                location.getEntertainmentEvents());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getUsers(), getSeminarEvent(), getInternalTrainingEvents(), getEntertainmentEvents());
+    }
+
 }

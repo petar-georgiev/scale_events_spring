@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class EventDO implements Event {
-
     private UUID id;
     private String name;
     private String imageUrl;

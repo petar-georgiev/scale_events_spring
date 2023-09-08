@@ -1,13 +1,11 @@
 package com.scale_events.web.dto;
 
 import com.scale_events.model.enums.OfficeLocationEnum;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-@Component
 public  class LocationDTO {
     private  UUID id;
     private  OfficeLocationEnum name;
@@ -16,10 +14,9 @@ public  class LocationDTO {
     private  Set<InternalTrainingEventDTO> internalTrainingEvents;
     private  Set<EntertainmentEventDTO> entertainmentEvents;
 
-    public LocationDTO() {
-    }
-
-    public LocationDTO(UUID id, OfficeLocationEnum name, Set<UserDTO> users, SeminarEventDTO seminarEvent, Set<InternalTrainingEventDTO> internalTrainingEvents, Set<EntertainmentEventDTO> entertainmentEvents) {
+    public LocationDTO(UUID id, OfficeLocationEnum name, Set<UserDTO> users,
+                       SeminarEventDTO seminarEvent, Set<InternalTrainingEventDTO> internalTrainingEvents,
+                       Set<EntertainmentEventDTO> entertainmentEvents) {
         this.id = id;
         this.name = name;
         this.users = users;
@@ -110,5 +107,4 @@ public  class LocationDTO {
                 "internalTrainingEvents=" + internalTrainingEvents + ", " +
                 "entertainmentEvents=" + entertainmentEvents + ']';
     }
-
 }

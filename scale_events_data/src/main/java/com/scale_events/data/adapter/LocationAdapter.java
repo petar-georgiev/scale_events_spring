@@ -6,7 +6,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface LocationAdapter {
-
     public LocationEntity convertToEntity(LocationDO location);
 
     public LocationDO convertFromEntity(LocationEntity locationEntity);

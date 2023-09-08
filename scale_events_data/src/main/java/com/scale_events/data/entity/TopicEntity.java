@@ -1,7 +1,13 @@
 package com.scale_events.data.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -31,7 +37,9 @@ public class TopicEntity {
     public TopicEntity() {
     }
 
-    public TopicEntity(UUID id, String name, String description, SkillAreaEntity skillArea, SeminarEventEntity seminarEvent, Set<InternalTrainingEventEntity> internalTrainingEvents, CategoryEntity category) {
+    public TopicEntity(UUID id, String name, String description,
+                       SkillAreaEntity skillArea, SeminarEventEntity seminarEvent,
+                       Set<InternalTrainingEventEntity> internalTrainingEvents, CategoryEntity category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -102,5 +110,23 @@ public class TopicEntity {
     public TopicEntity setCategory(CategoryEntity category) {
         this.category = category;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TopicEntity that = (TopicEntity) o;
+        return getId().equals(that.getId()) && Objects.equals(getName(),
+                that.getName()) && Objects.equals(getDescription(),
+                that.getDescription()) && Objects.equals(getSkillArea(),
+                that.getSkillArea()) && Objects.equals(getSeminarEvent(),
+                that.getSeminarEvent()) && Objects.equals(getInternalTrainingEvents(),
+                that.getInternalTrainingEvents()) && Objects.equals(getCategory(), that.getCategory());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getDescription(), getSkillArea(), getSeminarEvent(), getInternalTrainingEvents(), getCategory());
     }
 }

@@ -1,11 +1,16 @@
 package com.scale_events.data.entity;
 
-
 import com.scale_events.model.enums.RoleNameEnum;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+import java.util.Objects;
 import java.util.UUID;
-
 
 @Entity
 @Table(name = "users")
@@ -17,14 +22,10 @@ public class UserEntity {
     private String lastName;
     private String password;
     private String email;
-
     @ManyToOne
     private LocationEntity location;
-
-
     @Enumerated(EnumType.STRING)
     private RoleNameEnum role;
-
 
     public UserEntity() {
     }
@@ -100,5 +101,31 @@ public class UserEntity {
     public UserEntity setRole(RoleNameEnum role) {
         this.role = role;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity user = (UserEntity) o;
+        return getId().equals(user.getId()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getLocation(), user.getLocation()) && getRole() == user.getRole();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getPassword(), getEmail(), getLocation(), getRole());
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", location=" + location +
+                ", role=" + role +
+                '}';
     }
 }

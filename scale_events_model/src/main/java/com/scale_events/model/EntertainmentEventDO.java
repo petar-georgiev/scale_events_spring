@@ -14,7 +14,6 @@ public class EntertainmentEventDO extends EventDO implements EntertainmentEvent 
         return location;
     }
 
-
     @Override
     public void setActivity(String activity) {
         this.activity = activity;

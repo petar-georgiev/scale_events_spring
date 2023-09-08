@@ -6,7 +6,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface LocationDTOAdapter  {
-
     public LocationDTO convertToDTO(LocationDO location);
 
     public LocationDO convertFromDTO(LocationDTO locationDTO) ;

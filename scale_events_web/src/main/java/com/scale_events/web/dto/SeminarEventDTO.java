@@ -9,10 +9,9 @@ public class SeminarEventDTO extends EventDTO {
     private Set<TopicDTO> topics;
     private Set<LocationDTO> locations;
 
-    public SeminarEventDTO() {
-    }
-
-    public SeminarEventDTO(UUID id, String name, String imageUrl, LocalDateTime startDate, LocalDateTime endDate, String description, String recordingURL, Set<LocationDTO> locations, Set<TopicDTO> topics) {
+    public SeminarEventDTO(UUID id, String name, String imageUrl,
+                           LocalDateTime startDate, LocalDateTime endDate, String description,
+                           String recordingURL, Set<LocationDTO> locations, Set<TopicDTO> topics) {
         super(id, name, imageUrl, startDate, endDate, description);
         this.recordingURL = recordingURL;
         this.locations = locations;

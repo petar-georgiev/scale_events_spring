@@ -8,12 +8,11 @@ public class EntertainmentEventDTO extends EventDTO {
     private String activity;
     private LocationDTO location;
 
-    public EntertainmentEventDTO() {
-    }
-
-    public EntertainmentEventDTO(UUID id, String name, String imageUrl, LocalDateTime startDate, LocalDateTime endDate, String description, String description1, String activity, LocationDTO location) {
+    public EntertainmentEventDTO(UUID id, String name, String imageUrl,
+                                 LocalDateTime startDate, LocalDateTime endDate,
+                                 String description, String description1, String activity, LocationDTO location) {
         super(id, name, imageUrl, startDate, endDate, description);
-        this.description = description1;
+        this.description = description;
         this.activity = activity;
         this.location = location;
     }
