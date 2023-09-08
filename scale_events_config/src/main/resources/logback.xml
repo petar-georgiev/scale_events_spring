@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <property name="LOGS" value="./logs"/>
+
+    <appender name="ROLLING_FILE_APPENDER"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/scale_events.log</file>
+        <encoder
+                class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d %p %C{1} [%t] %m%n</Pattern>
+        </encoder>
+
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/scale_events-%d{yyyy-MM-dd}.%i.gz
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+                <totalSizeCap>5GB</totalSizeCap>
+                <maxHistory>30</maxHistory>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <logger name="org.springframework" level="warn">
+        <appender-ref ref="ROLLING_FILE_APPENDER"/>
+    </logger>
+    <logger name="com.scale_events.config" level="info">
+        <appender-ref ref="ROLLING_FILE_APPENDER"/>
+    </logger>
+    <logger name="com.scale_events.data" level="info">
+        <appender-ref ref="ROLLING_FILE_APPENDER"/>
+    </logger>
+    <logger name="com.scale_events.service" level="info">
+        <appender-ref ref="ROLLING_FILE_APPENDER"/>
+    </logger>
+    <logger name="com.scale_events.model" level="info">
+        <appender-ref ref="ROLLING_FILE_APPENDER"/>
+    </logger>
+    <logger name="com.scale_events.web" level="info">
+        <appender-ref ref="ROLLING_FILE_APPENDER"/>
+    </logger>
+
+</configuration>
