@@ -6,10 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface EntertainmentEventAdapter {
+    public EntertainmentEventEntity convertToEntity(EntertainmentEventDO entertainmentEvent);
 
-    public EntertainmentEventEntity convertToEntity(EntertainmentEventDO entE);
-
-
-    public EntertainmentEventDO convertFromEntity(EntertainmentEventEntity entEE);
-
+    public EntertainmentEventDO convertFromEntity(EntertainmentEventEntity entertainmentEventEntity);
 }

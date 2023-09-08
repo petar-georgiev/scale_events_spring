@@ -20,7 +20,7 @@ public interface Location {
 
     void setId(UUID id);
 
-    void setName(OfficeLocationEnum officeLocationEnum);
+    void setName(OfficeLocationEnum name);
 
     void setUsers(Set<UserDO> users);
 
@@ -29,5 +29,4 @@ public interface Location {
     void setInternalTrainingEvents(Set<InternalTrainingEventDO> internalTrainingEvents);
 
     void setEntertainmentEvents(Set<EntertainmentEventDO> entertainmentEvents);
-
 }

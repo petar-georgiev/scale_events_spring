@@ -22,9 +22,9 @@ public interface Event {
 
     void setImageUrl(String ImageUrl);
 
-    void setStartDate(LocalDateTime localDateTime);
+    void setStartDate(LocalDateTime startDate);
 
-    void setEndDate(LocalDateTime localDateTime);
+    void setEndDate(LocalDateTime endDate);
 
     void setDescription(String description);
 }

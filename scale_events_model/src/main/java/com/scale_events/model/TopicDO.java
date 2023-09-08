@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.UUID;
 
 public class TopicDO implements Topic {
-
     private UUID id;
 
     private String name;

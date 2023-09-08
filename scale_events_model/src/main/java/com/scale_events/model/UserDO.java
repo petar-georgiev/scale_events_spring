@@ -5,7 +5,6 @@ import com.scale_events.model.enums.RoleNameEnum;
 import java.util.UUID;
 
 public class UserDO implements User {
-
     private UUID id;
     private String firstname;
     private String lastname;
@@ -48,7 +47,6 @@ public class UserDO implements User {
     public RoleNameEnum getRole() {
         return role;
     }
-
 
     @Override
     public void setId(UUID id) {

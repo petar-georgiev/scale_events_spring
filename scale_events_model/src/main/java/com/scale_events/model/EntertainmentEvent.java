@@ -8,6 +8,4 @@ public interface EntertainmentEvent extends Event {
     void setActivity(String activity);
 
     void setLocation(LocationDO location);
-
-
 }

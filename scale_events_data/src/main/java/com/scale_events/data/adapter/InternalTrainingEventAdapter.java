@@ -6,8 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface InternalTrainingEventAdapter {
-    public InternalTrainingEventEntity convertToEntity(InternalTrainingEventDO intTE);
+    public InternalTrainingEventEntity convertToEntity(InternalTrainingEventDO internalTrainingEvent);
 
-    public InternalTrainingEventDO convertFromEntity(InternalTrainingEventEntity intTEE);
-
+    public InternalTrainingEventDO convertFromEntity(InternalTrainingEventEntity internalTrainingEventEntity);
 }

@@ -17,8 +17,6 @@
     </properties>
 
     <dependencies>
-
-        <!--module dep-->
         <dependency>
             <groupId>com.scalefocus</groupId>
             <artifactId>scale_events_service</artifactId>
@@ -29,8 +27,6 @@
             <artifactId>scale_events_model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <!--module dep-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -71,12 +67,11 @@
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
-                            <version>1.5.3.Final</version>
+                            <version>${mapstruct.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

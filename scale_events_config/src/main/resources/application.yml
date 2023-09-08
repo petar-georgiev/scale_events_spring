@@ -18,13 +18,3 @@ spring:
     user:
       name: ${USERNAME}
       password: ${PASSWORD}
-
-logging:
-  level:
-    org.springframework.core.io.support: DEBUG
-    org.springframework.context.annotation: DEBUG
-
-
-#  host:
-#    url: ${HOST_URL}
-

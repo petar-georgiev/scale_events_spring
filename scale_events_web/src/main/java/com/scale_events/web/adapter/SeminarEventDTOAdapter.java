@@ -6,9 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface SeminarEventDTOAdapter {
-
     public SeminarEventDTO convertToDTO(SeminarEventDO semE);
-
 
     public SeminarEventDO convertFromDTO(SeminarEventDTO semED);
 }
