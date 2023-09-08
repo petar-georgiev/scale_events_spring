@@ -20,6 +20,9 @@ public class InternalTrainingEventEntity extends EventEntity {
     @ManyToOne
     private LocationEntity location;
 
+    public InternalTrainingEventEntity() {
+    }
+
     public InternalTrainingEventEntity(UUID id, String name, String imageUrl,
                                        LocalDateTime startDate, LocalDateTime endDate,
                                        String description, String recordingUrl,

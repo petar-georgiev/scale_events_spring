@@ -12,7 +12,8 @@ public class EventDTO {
     private  LocalDateTime endDate;
     private  String description;
 
-    public EventDTO(UUID id, String name, String imageUrl, LocalDateTime startDate, LocalDateTime endDate, String description) {
+    public EventDTO(UUID id, String name, String imageUrl, LocalDateTime startDate,
+                    LocalDateTime endDate, String description) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;

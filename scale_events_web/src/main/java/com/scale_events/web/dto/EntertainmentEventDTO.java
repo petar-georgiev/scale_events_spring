@@ -4,28 +4,15 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class EntertainmentEventDTO extends EventDTO {
-    private String description;
     private String activity;
     private LocationDTO location;
 
     public EntertainmentEventDTO(UUID id, String name, String imageUrl,
                                  LocalDateTime startDate, LocalDateTime endDate,
-                                 String description, String description1, String activity, LocationDTO location) {
+                                 String description, String activity, LocationDTO location) {
         super(id, name, imageUrl, startDate, endDate, description);
-        this.description = description;
         this.activity = activity;
         this.location = location;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
-    @Override
-    public EntertainmentEventDTO setDescription(String description) {
-        this.description = description;
-        return this;
     }
 
     public String getActivity() {

@@ -16,6 +16,9 @@ public class EntertainmentEventEntity extends EventEntity {
     @ManyToOne
     private LocationEntity location;
 
+    public EntertainmentEventEntity() {
+    }
+
     public EntertainmentEventEntity(UUID id, String name, String imageUrl,
                                     LocalDateTime startDate, LocalDateTime endDate,
                                     String description, String activity, LocationEntity location) {

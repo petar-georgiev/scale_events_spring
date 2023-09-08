@@ -5,25 +5,25 @@ import java.util.Set;
 import java.util.UUID;
 
 public class SeminarEventDTO extends EventDTO {
-    private String recordingURL;
+    private String recordingUrl;
     private Set<TopicDTO> topics;
     private Set<LocationDTO> locations;
 
     public SeminarEventDTO(UUID id, String name, String imageUrl,
                            LocalDateTime startDate, LocalDateTime endDate, String description,
-                           String recordingURL, Set<LocationDTO> locations, Set<TopicDTO> topics) {
+                           String recordingUrl, Set<LocationDTO> locations, Set<TopicDTO> topics) {
         super(id, name, imageUrl, startDate, endDate, description);
-        this.recordingURL = recordingURL;
+        this.recordingUrl = recordingUrl;
         this.locations = locations;
         this.topics = topics;
     }
 
-    public String getRecordingURL() {
-        return recordingURL;
+    public String getRecordingUrl() {
+        return recordingUrl;
     }
 
-    public SeminarEventDTO setRecordingURL(String recordingURL) {
-        this.recordingURL = recordingURL;
+    public SeminarEventDTO setRecordingUrl(String recordingUrl) {
+        this.recordingUrl = recordingUrl;
         return this;
     }
 

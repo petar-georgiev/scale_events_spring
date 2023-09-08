@@ -19,6 +19,9 @@ public class EventEntity {
     private LocalDateTime endDate;
     private String description;
 
+    public EventEntity() {
+    }
+
     public EventEntity(UUID id, String name, String imageUrl, LocalDateTime startDate,
                        LocalDateTime endDate, String description) {
         this.id = id;

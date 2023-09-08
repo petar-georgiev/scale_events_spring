@@ -19,6 +19,8 @@ public class SeminarEventEntity extends EventEntity {
     @OneToMany(mappedBy = "seminarEvent")
     private Set<LocationEntity> locations;
 
+    public SeminarEventEntity() {
+    }
 
     public SeminarEventEntity(UUID id, String name, String imageUrl,
                               LocalDateTime startDate, LocalDateTime endDate,
