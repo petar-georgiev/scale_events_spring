@@ -19,7 +19,6 @@ public interface User {
 
     RoleNameEnum getRole();
 
-
     void setId(UUID id);
 
     void setFirstName(String firstname);

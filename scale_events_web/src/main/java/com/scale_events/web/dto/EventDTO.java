@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-public  class EventDTO {
+public class EventDTO {
     private  UUID id;
     private  String name;
     private  String imageUrl;
@@ -12,10 +12,8 @@ public  class EventDTO {
     private  LocalDateTime endDate;
     private  String description;
 
-    public EventDTO() {
-    }
-
-    public EventDTO(UUID id, String name, String imageUrl, LocalDateTime startDate, LocalDateTime endDate, String description) {
+    public EventDTO(UUID id, String name, String imageUrl, LocalDateTime startDate,
+                    LocalDateTime endDate, String description) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
@@ -106,5 +104,4 @@ public  class EventDTO {
                 "endDate=" + endDate + ", " +
                 "description=" + description + ']';
     }
-
 }

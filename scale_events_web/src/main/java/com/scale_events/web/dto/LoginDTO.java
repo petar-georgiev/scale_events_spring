@@ -2,12 +2,9 @@ package com.scale_events.web.dto;
 
 import java.util.Objects;
 
-public  class LoginDTO {
+public class LoginDTO {
     private  String email;
     private  String password;
-
-    public LoginDTO() {
-    }
 
     public LoginDTO(String email, String password) {
         this.email = email;
@@ -52,5 +49,4 @@ public  class LoginDTO {
                 "email=" + email + ", " +
                 "password=" + password + ']';
     }
-
 }

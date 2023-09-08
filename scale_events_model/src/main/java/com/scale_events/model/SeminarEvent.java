@@ -14,5 +14,4 @@ public interface SeminarEvent extends Event {
     void setLocations(Set<LocationDO> locations);
 
     void setTopics(Set<TopicDO> topics);
-
 }

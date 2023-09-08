@@ -5,7 +5,6 @@ import com.scale_events.model.enums.SkillAreaTypeEnum;
 import java.util.Set;
 
 public interface SkillArea {
-
     Long getId();
 
     SkillAreaTypeEnum getType();
@@ -21,5 +20,4 @@ public interface SkillArea {
     void setTopics(Set<TopicDO> topics);
 
     void setCategories(Set<CategoryDO> categories);
-
 }

@@ -1,14 +1,21 @@
 package com.scale_events.data.entity;
 
 import com.scale_events.model.enums.SkillAreaTypeEnum;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "skill_areas")
 public class SkillAreaEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -66,5 +73,30 @@ public class SkillAreaEntity {
     public SkillAreaEntity setCategories(Set<CategoryEntity> categories) {
         this.categories = categories;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SkillAreaEntity that = (SkillAreaEntity) o;
+        return getId().equals(that.getId()) &&
+                getType() == that.getType() && Objects.equals(getTopics(),
+                that.getTopics()) && Objects.equals(getCategories(), that.getCategories());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getType(), getTopics(), getCategories());
+    }
+
+    @Override
+    public String toString() {
+        return "SkillAreaEntity{" +
+                "id=" + id +
+                ", type=" + type +
+                ", topics=" + topics +
+                ", categories=" + categories +
+                '}';
     }
 }

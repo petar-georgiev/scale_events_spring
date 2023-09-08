@@ -5,18 +5,12 @@ import com.scale_events.model.enums.OfficeLocationEnum;
 import java.util.Set;
 import java.util.UUID;
 
-
 public class LocationDO implements Location {
     private UUID id;
-
     private OfficeLocationEnum name;
-
     private SeminarEventDO seminarEvent;
-
     private Set<UserDO> users;
-
     private Set<InternalTrainingEventDO> internalTrainingEvents;
-
     private Set<EntertainmentEventDO> entertainmentEvents;
 
     @Override

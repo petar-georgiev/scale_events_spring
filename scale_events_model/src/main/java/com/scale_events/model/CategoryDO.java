@@ -9,7 +9,6 @@ public class CategoryDO implements Category {
     private Set<TopicDO> topics;
     private SkillAreaDO skillArea;
 
-
     @Override
     public Long getId() {
         return id;
@@ -59,4 +58,5 @@ public class CategoryDO implements Category {
     public void setSkillArea(SkillAreaDO skillArea) {
         this.skillArea = skillArea;
     }
+
 }

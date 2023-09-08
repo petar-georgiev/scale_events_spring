@@ -17,14 +17,11 @@
     </properties>
 
     <dependencies>
-        <!--module dep-->
         <dependency>
             <groupId>com.scalefocus</groupId>
             <artifactId>scale_events_model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <!--module dep-->
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
