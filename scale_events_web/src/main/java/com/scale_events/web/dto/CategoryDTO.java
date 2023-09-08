@@ -10,9 +10,6 @@ public class CategoryDTO {
     private  Set<TopicDTO> topics;
     private  SkillAreaDTO skillArea;
 
-    public CategoryDTO() {
-    }
-
     public CategoryDTO(Long id, String name, String description, Set<TopicDTO> topics, SkillAreaDTO skillArea) {
         this.id = id;
         this.name = name;
@@ -92,5 +89,4 @@ public class CategoryDTO {
                 "topics=" + topics + ", " +
                 "skillArea=" + skillArea + ']';
     }
-
 }

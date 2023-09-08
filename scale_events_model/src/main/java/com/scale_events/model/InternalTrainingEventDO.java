@@ -36,5 +36,4 @@ public class InternalTrainingEventDO extends EventDO implements InternalTraining
     public void setLocation(LocationDO location) {
         this.location = location;
     }
-
 }

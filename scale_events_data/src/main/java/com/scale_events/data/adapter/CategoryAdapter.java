@@ -6,10 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface CategoryAdapter {
-
     public CategoryEntity convertToEntity(CategoryDO category);
 
-
     public CategoryDO convertFromEntity(CategoryEntity categoryEntity);
-
 }

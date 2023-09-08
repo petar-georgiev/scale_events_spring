@@ -1,13 +1,11 @@
 package com.scale_events.web.dto;
 
-
 import com.scale_events.model.enums.RoleNameEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 import java.util.UUID;
-
 
 public  class UserDTO {
     private  @NotNull UUID id;
@@ -17,9 +15,6 @@ public  class UserDTO {
     private  @Email String email;
     private  LocationDTO location;
     private  RoleNameEnum role;
-
-    public UserDTO() {
-    }
 
     public UserDTO(UUID id, String firstName, String lastName, String password, String email, LocationDTO location, RoleNameEnum role) {
         this.id = id;
@@ -124,5 +119,4 @@ public  class UserDTO {
                 "location=" + location + ", " +
                 "role=" + role + ']';
     }
-
 }

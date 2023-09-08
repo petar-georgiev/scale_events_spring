@@ -6,10 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface CategoryDTOAdapter {
-
     public CategoryDTO convertToDTO(CategoryDO category);
 
-
     public CategoryDO convertFromDTO(CategoryDTO categoryDTO);
-
 }

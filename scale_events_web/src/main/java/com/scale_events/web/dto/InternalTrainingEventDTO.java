@@ -8,10 +8,9 @@ public  class InternalTrainingEventDTO extends EventDTO {
     private  TopicDTO topic;
     private  LocationDTO location;
 
-    public InternalTrainingEventDTO() {
-    }
-
-    public InternalTrainingEventDTO(UUID id, String name, String imageUrl, LocalDateTime startDate, LocalDateTime endDate, String description, String recordingUrl, TopicDTO topic, LocationDTO location) {
+    public InternalTrainingEventDTO(UUID id, String name, String imageUrl,
+                                    LocalDateTime startDate, LocalDateTime endDate,
+                                    String description, String recordingUrl, TopicDTO topic, LocationDTO location) {
         super(id, name, imageUrl, startDate, endDate, description);
         this.recordingUrl = recordingUrl;
         this.topic = topic;
@@ -35,7 +34,6 @@ public  class InternalTrainingEventDTO extends EventDTO {
         this.topic = topic;
         return this;
     }
-
     public LocationDTO getLocation() {
         return location;
     }
@@ -44,5 +42,4 @@ public  class InternalTrainingEventDTO extends EventDTO {
         this.location = location;
         return this;
     }
-
 }

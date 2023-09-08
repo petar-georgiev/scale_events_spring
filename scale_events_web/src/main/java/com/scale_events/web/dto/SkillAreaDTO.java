@@ -12,9 +12,6 @@ public  class SkillAreaDTO {
     private  Set<TopicDTO> topics;
     private  Set<CategoryDTO> categories;
 
-    public SkillAreaDTO() {
-    }
-
     public SkillAreaDTO(Long id, SkillAreaTypeEnum type, Set<TopicDTO> topics, Set<CategoryDTO> categories) {
         this.id = id;
         this.type = type;
@@ -82,5 +79,4 @@ public  class SkillAreaDTO {
                 "topics=" + topics + ", " +
                 "categories=" + categories + ']';
     }
-
 }

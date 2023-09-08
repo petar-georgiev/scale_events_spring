@@ -1,6 +1,5 @@
 package com.scale_events.web.dto;
 
-
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -13,9 +12,6 @@ public  class TopicDTO {
     private  SeminarEventDTO seminarEvent;
     private Set<InternalTrainingEventDTO> internalTrainingEvents;
     private  CategoryDTO category;
-
-    public TopicDTO() {
-    }
 
     public TopicDTO(UUID id, String name, String description, SkillAreaDTO skillArea, SeminarEventDTO seminarEvent, Set<InternalTrainingEventDTO> internalTrainingEvents, CategoryDTO category) {
         this.id = id;
@@ -120,5 +116,4 @@ public  class TopicDTO {
                 "trainingEvent=" + internalTrainingEvents + ", " +
                 "category=" + category + ']';
     }
-
 }

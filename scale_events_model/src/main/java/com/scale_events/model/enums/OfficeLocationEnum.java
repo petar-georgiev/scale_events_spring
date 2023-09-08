@@ -7,6 +7,5 @@ public enum OfficeLocationEnum {
     BURGAS,
     ISTANBUL,
     SKOPJE,
-    BITOLIYA,
-    GUEST
+    BITOLIYA
 }

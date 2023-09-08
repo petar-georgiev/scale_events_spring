@@ -15,14 +15,14 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>com.scalefocus</groupId>
     <artifactId>scale_events_parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>scale_events_spring</name>
-    <description>Project for Scale Focus events</description>
+    <description>Project for ScaleFocus events</description>
 
     <packaging>pom</packaging>
 
@@ -127,5 +127,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
