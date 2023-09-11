@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface LoginDTOAdapter {
-    public LoginDTO convertToDTO(LoginDO user);
+    LoginDTO convertToDTO(LoginDO user);
 
-    public LoginDO convertFromDTO(LoginDTO loginDTO);
+    LoginDO convertFromDTO(LoginDTO loginDTO);
 }
