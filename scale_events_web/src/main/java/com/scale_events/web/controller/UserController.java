@@ -3,12 +3,13 @@ package com.scale_events.web.controller;
 import com.scale_events.model.LoginDO;
 import com.scale_events.model.UserDO;
 import com.scale_events.service.domain.UserService;
+import com.scale_events.service.response.UserResponse;
 import com.scale_events.web.adapter.LoginDTOAdapter;
 import com.scale_events.web.adapter.UserDTOAdapter;
 import com.scale_events.web.dto.LoginDTO;
 import com.scale_events.web.dto.UserDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,48 +24,49 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/v1")
-public class UserRestController {
+public class UserController {
     private final UserService userService;
     private final UserDTOAdapter userDTOAdapter;
     private final LoginDTOAdapter loginDTOAdapter;
 
-    public UserRestController(UserService userService, UserDTOAdapter userDTOAdapter, LoginDTOAdapter loginDTOAdapter, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, UserDTOAdapter userDTOAdapter, LoginDTOAdapter loginDTOAdapter) {
         this.userService = userService;
         this.userDTOAdapter = userDTOAdapter;
         this.loginDTOAdapter = loginDTOAdapter;
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<UserDTO>> getAllUsers() {
-        List<UserDO> fetchedUsers = userService.findAllUsers();
-        List<UserDTO> users = fetchedUsers.stream()
-                .map(userDTOAdapter::convertToDTO)
+    public ResponseEntity<List<UserResponse>> getAll() {
+        List<UserDO> fetchedUsers = userService.findAll();
+        List<UserResponse> users = fetchedUsers.stream()
+                .map(userDTOAdapter::convertToResponse)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(users);
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable UUID id) {
+    public ResponseEntity<UserResponse> getById(@PathVariable UUID id) {
         UserDO fetchedUser = userService.findById(id);
-        UserDTO users = userDTOAdapter.convertToDTO(fetchedUser);
-        return ResponseEntity.ok(users);
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<String> saveEmployee(@RequestBody UserDTO userDTO) {
-        UserDO userDO = userDTOAdapter.convertFromDTO(userDTO);
-        return ResponseEntity.ok(userService.addUser(userDO));
+        return ResponseEntity.ok(userDTOAdapter.convertToResponse(fetchedUser));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDTO) {
+    public ResponseEntity<UserResponse> login(@RequestBody LoginDTO loginDTO) {
         LoginDO loginDO = loginDTOAdapter.convertFromDTO(loginDTO);
-        return ResponseEntity.ok(userService.loginUser(loginDO));
+        UserResponse userResponse = userDTOAdapter.convertToResponse(userService.login(loginDO));
+        return ResponseEntity.ok(userResponse);
     }
 
-    @DeleteMapping("/users/delete/{id}")
-    ResponseEntity<?> deleteUser(@PathVariable UUID id) {
-        userService.deleteItem(id);
-        return ResponseEntity.ok("User with ID " + id + " deleted successfully.");
+    @PostMapping("/register")
+    public ResponseEntity<UserResponse> create(@RequestBody UserDTO userDTO) {
+        UserDO userDO = userDTOAdapter.convertFromDTO(userDTO);
+        UserResponse userResponse = userDTOAdapter.convertToResponse(userService.create(userDO));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
+    }
+
+    @DeleteMapping("/users/{id}")
+    ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

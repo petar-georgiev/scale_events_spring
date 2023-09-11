@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface EventDTOAdapter {
-    public EventDTO convertToDTO(EventDO event);
+    EventDTO convertToDTO(EventDO event);
 
-    public EventDO convertFromDTO(EventDTO eventDTO);
+    EventDO convertFromDTO(EventDTO eventDTO);
 }

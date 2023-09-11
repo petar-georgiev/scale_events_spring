@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface SkillAreaDTOAdapter {
-    public SkillAreaDTO convertToDTO(SkillAreaDO skillArea);
+    SkillAreaDTO convertToDTO(SkillAreaDO skillArea);
 
-    public SkillAreaDO convertFromDTO(SkillAreaDTO skillAreaDTO);
+    SkillAreaDO convertFromDTO(SkillAreaDTO skillAreaDTO);
 }

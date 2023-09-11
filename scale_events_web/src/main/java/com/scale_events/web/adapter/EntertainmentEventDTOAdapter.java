@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface EntertainmentEventDTOAdapter {
-    public EntertainmentEventDTO convertToDTO(EntertainmentEventDO entertainmentEvent);
+    EntertainmentEventDTO convertToDTO(EntertainmentEventDO entertainmentEvent);
 
-    public EntertainmentEventDO convertFromDTO(EntertainmentEventDTO entertainmentEventDTO);
+    EntertainmentEventDO convertFromDTO(EntertainmentEventDTO entertainmentEventDTO);
 }

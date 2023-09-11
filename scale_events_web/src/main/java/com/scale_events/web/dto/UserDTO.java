@@ -7,16 +7,17 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.UUID;
 
-public  class UserDTO {
-    private  @NotNull UUID id;
-    private  String firstName;
-    private  String lastName;
-    private  String password;
-    private  @Email String email;
-    private  LocationDTO location;
-    private  RoleNameEnum role;
+public class UserDTO {
+    private @NotNull UUID id;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private @Email String email;
+    private LocationDTO location;
+    private RoleNameEnum role;
 
-    public UserDTO(UUID id, String firstName, String lastName, String password, String email, LocationDTO location, RoleNameEnum role) {
+    public UserDTO(UUID id, String firstName, String lastName, String password,
+                   String email, LocationDTO location, RoleNameEnum role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
