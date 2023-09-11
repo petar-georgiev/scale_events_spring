@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface TopicAdapter {
-    public TopicEntity convertToEntity(TopicDO topic);
+    TopicEntity convertToEntity(TopicDO topic);
 
-    public TopicDO convertFromEntity(TopicEntity topicEntity);
+    TopicDO convertFromEntity(TopicEntity topicEntity);
 }

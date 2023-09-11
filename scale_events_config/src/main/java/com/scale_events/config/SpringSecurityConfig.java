@@ -27,9 +27,12 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/").permitAll()
                         .requestMatchers(HttpMethod.GET,"/v1/users/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/v1/register", "/v1/login").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/v1/users/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .formLogin(form -> form.loginPage("/login").permitAll())
                 .logout(LogoutConfigurer::permitAll)
                 .build();
     }

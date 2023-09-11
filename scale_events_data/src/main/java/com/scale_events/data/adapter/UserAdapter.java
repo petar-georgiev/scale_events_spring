@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface UserAdapter {
-    public UserEntity convertToEntity(UserDO user);
+    UserEntity convertToEntity(UserDO user);
 
-    public UserDO convertFromEntity(UserEntity userEntity);
+    UserDO convertFromEntity(UserEntity userEntity);
 }

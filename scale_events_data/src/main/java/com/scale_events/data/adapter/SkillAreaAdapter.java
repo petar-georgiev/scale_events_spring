@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface SkillAreaAdapter  {
-    public SkillAreaEntity convertToEntity(SkillAreaDO skillArea);
+    SkillAreaEntity convertToEntity(SkillAreaDO skillArea);
 
-    public SkillAreaDO convertFromEntity(SkillAreaEntity skillAreaEntity);
+    SkillAreaDO convertFromEntity(SkillAreaEntity skillAreaEntity);
 }

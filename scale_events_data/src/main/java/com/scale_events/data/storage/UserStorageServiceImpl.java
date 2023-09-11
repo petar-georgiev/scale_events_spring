@@ -2,20 +2,21 @@ package com.scale_events.data.storage;
 
 import com.scale_events.data.adapter.UserAdapter;
 import com.scale_events.data.entity.UserEntity;
+import com.scale_events.data.exception.DuplicateEmailException;
 import com.scale_events.data.exception.InvalidPasswordException;
-import com.scale_events.data.exception.UserNotFoundException;
 import com.scale_events.data.repository.UserRepository;
 import com.scale_events.model.LoginDO;
 import com.scale_events.model.UserDO;
-import com.scale_events.service.response.LoginResponse;
 import com.scale_events.service.storage.UserStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class UserStorageServiceImpl implements UserStorageService {
@@ -33,45 +34,63 @@ public class UserStorageServiceImpl implements UserStorageService {
     }
 
     @Override
-    public List<UserDO> findAllUsers() {
+    public List<UserDO> findAll() {
         List<UserEntity> fetchedUsers = userRepository.findAll();
-
-        List<UserDO> users = new ArrayList<>();
-
-        for (UserEntity user : fetchedUsers) {
-            users.add(userAdapter.convertFromEntity(user));
-        }
-        return users;
+        return fetchedUsers.stream()
+                .map(userAdapter::convertFromEntity)
+                .collect(Collectors.toList());
     }
 
+    @Override
+    public UserDO findById(UUID id) {
+        return userRepository.findById(id)
+                .map(userAdapter::convertFromEntity)
+                .orElse(null);
+    }
 
     @Override
-    public String addUser(UserDO userDO) {
+    public UserDO login(LoginDO loginDO) {
+        UserEntity fetchedUser = userRepository.findByEmail(loginDO.getEmail());
+
+        if (fetchedUser == null) {
+            throw new UsernameNotFoundException("User not found.");
+        }
+
+        String password = loginDO.getPassword();
+        String encodedPassword = fetchedUser.getPassword();
+        boolean isCorrectPassword = passwordEncoder.matches(password, encodedPassword);
+
+        if (!isCorrectPassword) {
+            logger.info("User {} with failed login.", fetchedUser.getId());
+            throw new InvalidPasswordException("Login failed, passwords do not match.");
+        }
+        logger.info("User {} with successful login.", fetchedUser.getId());
+        return userAdapter.convertFromEntity(fetchedUser);
+    }
+
+    @Override
+    public UserDO create(UserDO userDO) {
+       UserEntity fetchedUser = userRepository.findByEmail(userDO.getEmail());
+
+        if (fetchedUser != null) {
+            logger.error("Duplicate email found: {}.", userDO.getEmail());
+            throw new DuplicateEmailException("Email already exists.");
+        }
+
         UserEntity user = userAdapter.convertToEntity(userDO);
+        user.setPassword(passwordEncoder.encode(userDO.getPassword()));
+
         UserEntity savedUser = userRepository.save(user);
-        logger.info("User created {}", savedUser.getId());
-        return user.getFirstName();
+        logger.info("User created with id: {}.", savedUser.getId());
+        return userAdapter.convertFromEntity(savedUser);
     }
 
     @Override
-    public LoginResponse loginUser(LoginDO loginDO) {
-        try {
-            UserEntity fetchedUser = userRepository.findByEmail(loginDO.getEmail());
-            if (fetchedUser == null) {
-                throw new UserNotFoundException("Email not found");
-            }
+    public void delete(UUID id) {
+        UserEntity fetchedUser = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found."));
 
-            String password = loginDO.getPassword();
-            String encodedPassword = fetchedUser.getPassword();
-            boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
-
-            if (isPwdRight) {
-                return new LoginResponse("Login Success", true);
-            } else {
-                throw new InvalidPasswordException("Login Failed, Passwords Not Match");
-            }
-        } catch (UserNotFoundException | InvalidPasswordException e) {
-            return new LoginResponse(e.getMessage(), false);
-        }
+        userRepository.delete(fetchedUser);
+        logger.info("Deleted user with id: {}", id);
     }
 }
