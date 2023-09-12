@@ -6,8 +6,8 @@ import java.util.UUID;
 
 public class UserDO implements User {
     private UUID id;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String password;
     private String email;
     private LocationDO location;
@@ -20,12 +20,12 @@ public class UserDO implements User {
 
     @Override
     public String getFirstName() {
-        return firstname;
+        return firstName;
     }
 
     @Override
     public String getLastName() {
-        return lastname;
+        return lastName;
     }
 
     @Override
@@ -55,12 +55,12 @@ public class UserDO implements User {
 
     @Override
     public void setFirstName(String firstname) {
-        this.firstname = firstname;
+        this.firstName = firstname;
     }
 
     @Override
     public void setLastName(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     @Override

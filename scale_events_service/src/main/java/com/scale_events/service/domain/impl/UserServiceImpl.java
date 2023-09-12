@@ -3,11 +3,11 @@ package com.scale_events.service.domain.impl;
 import com.scale_events.model.LoginDO;
 import com.scale_events.model.UserDO;
 import com.scale_events.service.domain.UserService;
-import com.scale_events.service.response.LoginResponse;
 import com.scale_events.service.storage.UserStorageService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -18,17 +18,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDO> findAllUsers() {
-        return userStorageService.findAllUsers();
+    public List<UserDO> findAll() {
+        return userStorageService.findAll();
     }
 
     @Override
-    public String addUser(UserDO userDO) {
-        return userStorageService.addUser(userDO);
+    public UserDO findById(UUID id) {
+        return userStorageService.findById(id);
     }
 
     @Override
-    public LoginResponse loginUser(LoginDO loginDO) {
-        return userStorageService.loginUser(loginDO);
+    public UserDO login(LoginDO loginDO) {
+        return userStorageService.login(loginDO);
+    }
+
+    @Override
+    public UserDO create(UserDO userDO) {
+        return userStorageService.create(userDO);
+    }
+
+    @Override
+    public UserDO update(UserDO userDO, UUID id) {
+        return userStorageService.update(userDO, id);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        userStorageService.delete(id);
     }
 }

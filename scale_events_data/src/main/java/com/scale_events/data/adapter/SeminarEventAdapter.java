@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface SeminarEventAdapter {
-    public SeminarEventEntity convertToEntity(SeminarEventDO seminarEvent);
+    SeminarEventEntity convertToEntity(SeminarEventDO seminarEvent);
 
-    public SeminarEventDO convertFromEntity(SeminarEventEntity internalTrainingEventEntity);
+    SeminarEventDO convertFromEntity(SeminarEventEntity internalTrainingEventEntity);
 }

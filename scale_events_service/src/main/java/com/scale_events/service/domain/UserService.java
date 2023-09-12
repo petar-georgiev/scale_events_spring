@@ -2,14 +2,20 @@ package com.scale_events.service.domain;
 
 import com.scale_events.model.LoginDO;
 import com.scale_events.model.UserDO;
-import com.scale_events.service.response.LoginResponse;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface UserService {
-    List<UserDO> findAllUsers();
+    List<UserDO> findAll();
 
-    String addUser(UserDO userDO);
+    UserDO findById(UUID id);
 
-    LoginResponse loginUser(LoginDO loginDO);
+    UserDO login(LoginDO loginDO);
+
+    UserDO create(UserDO userDO);
+
+    UserDO update(UserDO userDO, UUID id);
+
+    void delete(UUID id);
 }

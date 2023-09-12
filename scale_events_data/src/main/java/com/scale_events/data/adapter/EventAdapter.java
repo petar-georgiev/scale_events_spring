@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface EventAdapter {
-    public EventEntity convertToEntity(EventDO event);
+    EventEntity convertToEntity(EventDO event);
 
-    public EventDO convertFromEntity(EventEntity eventEntity);
+    EventDO convertFromEntity(EventEntity eventEntity);
 }
