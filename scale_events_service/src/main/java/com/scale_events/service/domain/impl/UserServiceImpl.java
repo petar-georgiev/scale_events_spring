@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDO update(UserDO userDO, UUID id) {
+        return userStorageService.update(userDO, id);
+    }
+
+    @Override
     public void delete(UUID id) {
         userStorageService.delete(id);
     }

@@ -29,6 +29,7 @@ public class SpringSecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/v1/users/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/v1/register", "/v1/login").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/v1/users/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/v1/users/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated()
                 )

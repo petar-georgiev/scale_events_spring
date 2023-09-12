@@ -15,5 +15,7 @@ public interface UserStorageService {
 
     UserDO create(UserDO userDO);
 
+    UserDO update(UserDO userDO, UUID id);
+
     void delete(UUID id);
 }

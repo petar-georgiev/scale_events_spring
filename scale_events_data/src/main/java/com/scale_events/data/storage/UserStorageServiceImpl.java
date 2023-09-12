@@ -1,5 +1,6 @@
 package com.scale_events.data.storage;
 
+import com.scale_events.data.adapter.LocationAdapter;
 import com.scale_events.data.adapter.UserAdapter;
 import com.scale_events.data.entity.UserEntity;
 import com.scale_events.data.exception.DuplicateEmailException;
@@ -27,10 +28,14 @@ public class UserStorageServiceImpl implements UserStorageService {
     private final UserAdapter userAdapter;
     private final PasswordEncoder passwordEncoder;
 
-    public UserStorageServiceImpl(UserRepository userRepository, UserAdapter userAdapter, PasswordEncoder passwordEncoder) {
+    private final LocationAdapter locationAdapter;
+
+
+    public UserStorageServiceImpl(UserRepository userRepository, UserAdapter userAdapter, LocationAdapter locationAdapter, PasswordEncoder passwordEncoder, LocationAdapter locationAdapter1) {
         this.userRepository = userRepository;
         this.userAdapter = userAdapter;
         this.passwordEncoder = passwordEncoder;
+        this.locationAdapter = locationAdapter1;
     }
 
     @Override
@@ -45,7 +50,7 @@ public class UserStorageServiceImpl implements UserStorageService {
     public UserDO findById(UUID id) {
         return userRepository.findById(id)
                 .map(userAdapter::convertFromEntity)
-                .orElse(null);
+                .orElseThrow(()-> new RuntimeException("User not found."));
     }
 
     @Override
@@ -70,7 +75,7 @@ public class UserStorageServiceImpl implements UserStorageService {
 
     @Override
     public UserDO create(UserDO userDO) {
-       UserEntity fetchedUser = userRepository.findByEmail(userDO.getEmail());
+        UserEntity fetchedUser = userRepository.findByEmail(userDO.getEmail());
 
         if (fetchedUser != null) {
             logger.error("Duplicate email found: {}.", userDO.getEmail());
@@ -83,6 +88,19 @@ public class UserStorageServiceImpl implements UserStorageService {
         UserEntity savedUser = userRepository.save(user);
         logger.info("User created with id: {}.", savedUser.getId());
         return userAdapter.convertFromEntity(savedUser);
+    }
+
+    @Override
+    public UserDO update(UserDO userDO, UUID id) {
+        UserEntity fetchedUser = userRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("User not found."));
+
+        UserEntity user = userAdapter.convertToEntity(userDO);
+        userRepository.save(user);
+
+        logger.info("User updated with id: {}.", fetchedUser.getId());
+
+        return userAdapter.convertFromEntity(fetchedUser);
     }
 
     @Override
